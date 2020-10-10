@@ -25,9 +25,9 @@ $message .= "Enviado el: " . date('d/m/Y', time());
 $para = 'fdcarlosd1@gmail.com';
 $asunto = $data["subject"];
 
-mail("myemail@example.com", "Test!", "Hello, there!");
+$ff = mail("fdcarlosd1@gmail.com", "Test!", "Hello, there!");
 
-var_dump($message); die;
+var_dump($ff); die;
 
 try {
 
