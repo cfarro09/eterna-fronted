@@ -1,4 +1,5 @@
 <?php
+var_dump('eeeee'); die;
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -32,3 +33,4 @@ if (mail($para, $asunto, utf8_decode($message), $header)) {
 }
 
 var_dump($message);
+?>
