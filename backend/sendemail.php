@@ -25,6 +25,8 @@ $message .= "Enviado el: " . date('d/m/Y', time());
 $para = 'fdcarlosd1@gmail.com';
 $asunto = $data["subject"];
 
+var_dump($message); die;
+
 try {
     if (mail($para, $asunto, utf8_decode($message), $header)) {
         echo "Mensaje Enviado Correctamene, nos podremos en contacto con Usted";
