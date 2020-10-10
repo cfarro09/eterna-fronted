@@ -32,7 +32,7 @@ try {
         echo "Mensaje no Enviado";
     }
 } catch (Exception $e) {
-    echo $e->getMessage();
+    var_dump($e);
 }
 
 
