@@ -31,8 +31,8 @@ try {
     } else {
         echo "Mensaje no Enviado";
     }
-} catch (\Throwable $th) {
-    var_dump($th);
+} catch (Exception $e) {
+    echo $e->getMessage();
 }
 
 
