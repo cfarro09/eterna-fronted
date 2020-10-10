@@ -25,11 +25,16 @@ $message .= "Enviado el: " . date('d/m/Y', time());
 $para = 'fdcarlosd1@gmail.com';
 $asunto = $data["subject"];
 
-if (mail($para, $asunto, utf8_decode($message), $header)) {
-    echo "Mensaje Enviado Correctamene, nos podremos en contacto con Usted";
-} else {
-    echo "Mensaje no Enviado";
+try {
+    if (mail($para, $asunto, utf8_decode($message), $header)) {
+        echo "Mensaje Enviado Correctamene, nos podremos en contacto con Usted";
+    } else {
+        echo "Mensaje no Enviado";
+    }
+} catch (\Throwable $th) {
+    var_dump($th);
 }
+
 
 var_dump($message);
 ?>
