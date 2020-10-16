@@ -37,6 +37,7 @@ $mail->IsSMTP();                                      // Set mailer to use SMTP
 $mail->Host = 'localhost';  // Specify main and backup server
 $mail->SMTPAuth = false;                               // Enable SMTP authentication
 //$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+$mail->Port       = 465;   
 
 $mail->From = 'admin@eterna.com';
 $mail->FromName = 'Administrador de correo';
@@ -48,7 +49,6 @@ $mail->Body = $message;
 if (!$mail->Send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
-    print_r($mail);
     exit;
 }
 
