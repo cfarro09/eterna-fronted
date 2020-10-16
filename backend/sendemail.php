@@ -34,12 +34,12 @@ $asunto = $data["subject"];
 
 $mail = new PHPMailer;
 $mail->IsSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'localhost';  // Specify main and backup server
+$mail->Host = '158.69.156.166';  // Specify main and backup server
 $mail->SMTPAuth = false;                               // Enable SMTP authentication
 //$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
 $mail->Port       = 465;   
 
-$mail->From = 'admin@eterna.com';
+$mail->From = 'admin@eterna.comexce';
 $mail->FromName = 'Administrador de correo';
 $mail->AddAddress($para);  // Add a recipient
 $mail->IsHTML(true);        // Set email format to HTML
@@ -49,6 +49,7 @@ $mail->Body = $message;
 if (!$mail->Send()) {
     echo 'Message could not be sent.';
     echo 'Mailer Error: ' . $mail->ErrorInfo;
+    print_r($mail);
     exit;
 }
 
