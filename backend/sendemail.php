@@ -29,7 +29,6 @@ $asunto = $data["subject"];
 
 // $ff = mail($para, $asunto, $message, $header);
 
-var_dump($mail); die;
 // die;
 
 
