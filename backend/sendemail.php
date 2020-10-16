@@ -1,4 +1,5 @@
 <?php
+require 'phpmailer/class.phpmailer.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -23,10 +24,9 @@ $asunto = $data["subject"];
 
 // $ff = mail($para, $asunto, $message, $header);
 
-// var_dump($ff);
+var_dump($mail); die;
 // die;
 
-require 'phpmailer/class.phpmailer.php';
 
 $mail = new PHPMailer;
 $mail->IsSMTP();                                      // Set mailer to use SMTP
