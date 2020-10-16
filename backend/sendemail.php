@@ -37,7 +37,7 @@ $mail->IsSMTP();                                      // Set mailer to use SMTP
 $mail->Host = '158.69.156.166';  // Specify main and backup server
 $mail->SMTPAuth = false;                               // Enable SMTP authentication
 //$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
-$mail->Port       = 465;   
+// $mail->Port       = 465;   
 
 $mail->From = 'admin@eterna.comexce';
 $mail->FromName = 'Administrador de correo';
