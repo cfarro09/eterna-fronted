@@ -21,10 +21,10 @@ $message .= "Enviado el: " . date('d/m/Y', time());
 $para = 'fdcarlosd1@gmail.com';
 $asunto = $data["subject"];
 
-$ff = mail($para, $asunto, $message, $header);
+// $ff = mail($para, $asunto, $message, $header);
 
-var_dump($ff);
-die;
+// var_dump($ff);
+// die;
 
 require 'phpmailer/class.phpmailer.php';
 
