@@ -4,10 +4,6 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $email = "admin@admin.com";
 
-$header = 'From: ' . $email . " \r\n";
-$header .= "X-Mailer: PHP/" . phpversion() . " \r\n";
-$header .= "Mime-Version: 1.0 \r\n";
-$header .= "Content-Type: text/plain";
 
 $message = "Este mensaje fue enviado por: " . $data["nombre"] . " \r\n";
 $message .= "Su e-mail es: " . $data["email"] . " \r\n";
@@ -27,19 +23,44 @@ $asunto = $data["subject"];
 
 $ff = mail($para, $asunto, $message, $header);
 
-var_dump($ff); die;
+var_dump($ff);
+die;
 
-try {
+require 'phpmailer/class.phpmailer.php';
 
-    if (mail($para, $asunto, utf8_decode($message), $header)) {
-        echo "Mensaje Enviado Correctamene, nos podremos en contacto con Usted";
-    } else {
-        echo "Mensaje no Enviado";
-    }
-} catch (Exception $e) {
-    var_dump($e);
+$mail = new PHPMailer;
+$mail->IsSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'localhost';  // Specify main and backup server
+$mail->SMTPAuth = false;                               // Enable SMTP authentication
+//$mail->SMTPSecure = 'tls';                            // Enable encryption, 'ssl' also accepted
+
+$mail->From = 'admin@eterna.com';
+$mail->FromName = 'Administrador de correo';
+$mail->AddAddress($para);  // Add a recipient
+$mail->IsHTML(true);        // Set email format to HTML
+$mail->Subject = $asunto;
+$mail->Body = $message;
+
+if (!$mail->Send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    print_r($mail);
+    exit;
 }
 
+echo "Message has been sent\n";
 
-var_dump($message);
-?>
+
+// try {
+
+//     if (mail($para, $asunto, utf8_decode($message), $header)) {
+//         echo "Mensaje Enviado Correctamene, nos podremos en contacto con Usted";
+//     } else {
+//         echo "Mensaje no Enviado";
+//     }
+// } catch (Exception $e) {
+//     var_dump($e);
+// }
+
+
+// var_dump($message);
