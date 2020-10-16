@@ -1,5 +1,10 @@
 <?php
-require 'phpmailer/class.phpmailer.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
