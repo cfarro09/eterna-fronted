@@ -339,15 +339,22 @@
             return response.text(); // parses JSON response into native JavaScript objects
         }
 
-        const sendemail = (e) => {
+        const sendemail = async (e) => {
             e.preventDefault();
-            const body = {
-                subject: 'Atención al cliente'
-            };
-            e.target.querySelectorAll('.inputatencion').forEach(x => {
-                body[x.name] = x.value;
-            });
-            postData('backend/sendemail.php', body).then(x => x);
+            try {
+                const body = {
+                    subject: 'Atención al cliente'
+                };
+                e.target.querySelectorAll('.inputatencion').forEach(x => {
+                    body[x.name] = x.value;
+                });
+                await postData('backend/sendemail.php', body).then(x => x);
+                alert("¡Correo enviado!");
+                atencionalcliente.reset();
+            } catch (error) {
+                alert("Hubo un error, vuelva a intentarlo.")
+            }
+
         }
         const init = () => {
             atencionalcliente.addEventListener('submit', sendemail);

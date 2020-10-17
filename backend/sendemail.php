@@ -8,19 +8,19 @@ require 'vendor/autoload.php';
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$email = "admin@admin.com";
-$message = "Este mensaje fue enviado por: " . $data["nombre"] . " \r\n";
-$message .= "Su e-mail es: " . $data["email"] . " \r\n";
-$message .= "Su Asunto es: " . $data["subject"] . " \r\n";
-$message .= "Su telefono es: " . $data["telefono"] . " \r\n";
+$message = "<ul>
+<li>Nombre: ". $data["nombre"]."</li>
+<li>Correo: ". $data["email"]."</li>
+<li>Teléfono: ". $data["telefono"]."</li>
+<li>Fecha: ". "Fecha: " . date('d/m/Y', time()). "</li>";
 
 if (isset($data["distrito"]))
-    $message .= "Su distrito es: " . $data["distrito"] . " \r\n";
+    $message .= "<li>Distrito: ". $data["distrito"]."</li>";
+if (isset($data["provincia"]))
+    $message .= "<li>Provincia: ". $data["provincia"]."</li>";
 
-if (isset($data["residencia"]))
-    $message .= "Su residencia es: " . $data["residencia"] . " \r\n";
+$message .= "</ul>";
 
-$message .= "Enviado el: " . date('d/m/Y', time());
 $asunto = $data["subject"];
 
 $mail = new PHPMailer;

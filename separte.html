@@ -125,9 +125,8 @@
                     <label for="telefono">Distrito</label>
                     <input class="inputatencion" autocomplete="off" type="text" name="distrito"
                         placeholder="Tu distrito" required>
-                    <label for="telefono">Residencia</label>
-                    <input class="inputatencion" autocomplete="off" type="text" name="residencia"
-                        placeholder="Tu residencia" required>
+                    <label for="telefono">Provincia</label>
+                    <input class="inputatencion" autocomplete="off" type="text" name="provincia" placeholder="Tu provincia" required>
 
                 </fieldset>
 
@@ -199,15 +198,21 @@
             return response.text(); // parses JSON response into native JavaScript objects
         }
 
-        const sendemail = (e) => {
+        const sendemail = async (e) => {
             e.preventDefault();
-            const body = {
-                subject: 'Se parte de nosotros'
-            };
-            e.target.querySelectorAll('.inputatencion').forEach(x => {
-                body[x.name] = x.value;
-            });
-            postData('backend/sendemail.php', body).then(x => x);
+            try {
+                const body = {
+                    subject: 'Se parte de nosotros'
+                };
+                e.target.querySelectorAll('.inputatencion').forEach(x => {
+                    body[x.name] = x.value;
+                });
+                await postData('backend/sendemail.php', body).then(x => x);
+                separte.reset()
+                alert("¡Correo enviado!");
+            } catch (error) {
+                alert("Hubo un error, vuelva a intentarlo.")
+            }
         }
         const init = () => {
             separte.addEventListener('submit', sendemail);
