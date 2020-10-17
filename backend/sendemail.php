@@ -12,7 +12,7 @@ $message = "<ul>
 <li>Nombre: ". $data["nombre"]."</li>
 <li>Correo: ". $data["email"]."</li>
 <li>Teléfono: ". $data["telefono"]."</li>
-<li>Fecha: ". "Fecha: " . date('d/m/Y', time()). "</li>";
+<li>Fecha: ".date('d/m/Y', time()). "</li>";
 
 if (isset($data["distrito"]))
     $message .= "<li>Distrito: ". $data["distrito"]."</li>";
